@@ -3,7 +3,7 @@ import * as React from "react";
 export interface HelloProps {
   greeting: String;
   language: String;
-  onButtonClick: () => any;
+  onButtonClick: () => void;
 };
 
 const Hello: React.SFC<HelloProps> = (props) => {

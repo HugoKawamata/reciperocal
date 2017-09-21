@@ -4,7 +4,8 @@ export type Greeting = {
 }
 
 export type State = {
-  readonly greeting: Greeting;
+  readonly currentGreeting: Greeting;
+  readonly firebase: any;
 };
 
 export type Action = {
