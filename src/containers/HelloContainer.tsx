@@ -8,20 +8,20 @@ const mapStateToProps = (state: State) => {
     greeting: state.greeting.greeting,
     language: state.greeting.language
   };
-}
+};
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
     onButtonClick: function () {
       dispatch(setGreeting("Gutentag"));
-      dispatch(setLanguage("German"))
+      dispatch(setLanguage("German"));
     }
   };
-}
+};
 
 const HelloContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-) (Hello)
+) (Hello);
 
 export default HelloContainer;

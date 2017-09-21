@@ -4,7 +4,7 @@ export interface HelloProps {
   greeting: String;
   language: String;
   onButtonClick: () => any;
-}
+};
 
 const Hello: React.SFC<HelloProps> = (props) => {
   return (
@@ -19,7 +19,7 @@ const Hello: React.SFC<HelloProps> = (props) => {
         This greeting brought to you by the {props.language} language.
       </div>
     </div>
-  )
+  );
 }
 
 export default Hello;

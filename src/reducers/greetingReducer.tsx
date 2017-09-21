@@ -17,5 +17,4 @@ export default function greetingReducer(
     }
   }
   return state;
-};
-
+}

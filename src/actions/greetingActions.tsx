@@ -4,12 +4,12 @@ export function setGreeting(greeting: String) {
   return {
     type: "CHANGE_GREETING",
     payload: greeting
-  }
+  };
 }
 
 export function setLanguage(language: String) {
   return {
     type: "CHANGE_LANGUAGE",
     payload: language
-  }
+  };
 }
