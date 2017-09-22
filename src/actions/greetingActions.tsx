@@ -13,3 +13,24 @@ export function setLanguage(language: String) {
     payload: language
   };
 }
+
+export function accessFirebaseSucceeded(name: String) {
+  return {
+    type: "FIREBASE_SUCCEEDED",
+    payload: name
+  }
+}
+
+export function accessFirebaseRequested() {
+  return {
+    type: "FIREBASE_REQUESTED",
+    payload: ""
+  }
+}
+
+export function accessFirebaseError() {
+  return {
+    type: "FIREBASE_ERROR",
+    payload: ""
+  }
+}

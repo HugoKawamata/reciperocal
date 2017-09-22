@@ -1,22 +1,32 @@
 import { connect } from "react-redux";
 import Hello from "../components/Hello";
 import { State } from "../reducers/reducerTypes";
-import { setGreeting, setLanguage } from "../actions/greetingActions";
+import { setGreeting, setLanguage, accessFirebaseError, accessFirebaseRequested, accessFirebaseSucceeded } from "../actions/greetingActions";
 //import { compose } from 'redux'
 import {
   //firebaseConnect,
   //isLoaded,
   //isEmpty,
-  dataToJS,
-  pathToJS
+  //dataToJS,
+  //pathToJS
 } from "react-redux-firebase"
+import database from "../Global"
+
+const accessFirebase = (dispatch: any) => {
+  dispatch(accessFirebaseRequested());
+  database.ref("/").once("value", name => {
+    dispatch(accessFirebaseSucceeded(name.val()))
+  })
+  .catch((error) => {
+    console.log(error);
+    dispatch(accessFirebaseError());
+  });
+}
 
 const mapStateToProps = (state: State) => {
   return {
-    greeting: state.currentGreeting.greeting,
-    language: state.currentGreeting.language,
-    fibaGreetings: dataToJS(state.firebase, "fbGreetings"), // in v2 todos: state.firebase.data.todos
-    auth: pathToJS(state.firebase, "auth") // in v2 todos: state.firebase.auth
+    greeting: state.greeting.greeting,
+    language: state.greeting.language,
   };
 };
 
@@ -25,7 +35,8 @@ const mapDispatchToProps = (dispatch: any) => {
     onButtonClick: function () {
       dispatch(setGreeting("Gutentag"));
       dispatch(setLanguage("German"));
-    }
+    },
+    accessFiba: () => accessFirebase(dispatch),
   };
 };
 

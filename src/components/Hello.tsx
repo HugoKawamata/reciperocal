@@ -4,6 +4,7 @@ export interface HelloProps {
   greeting: String;
   language: String;
   onButtonClick: () => void;
+  accessFiba: () => void;
 };
 
 const Hello: React.SFC<HelloProps> = (props) => {
@@ -12,7 +13,7 @@ const Hello: React.SFC<HelloProps> = (props) => {
       <div>
         {props.greeting}, World!
       </div>
-      <button onClick={props.onButtonClick}>
+      <button onClick={props.accessFiba}>
         Change To German
       </button>
       <div>
