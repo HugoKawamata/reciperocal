@@ -1,11 +1,12 @@
+import { RecipeProps } from "../components/Recipe";
 export type Greeting = {
   readonly greeting: String;
   readonly language: String;
 }
 
 export type State = {
-  readonly greeting: Greeting;
   readonly firebase: any;
+  readonly recipeList: RecipeProps[]
 };
 
 export type Action = {

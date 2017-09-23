@@ -1,18 +1,10 @@
 import { connect } from "react-redux";
-import Hello from "../components/Hello";
+import { Recipe, RecipeProps, Ingredient } from "../components/Recipe";
 import { State } from "../reducers/reducerTypes";
 import { setGreeting, setLanguage, accessFirebaseError, accessFirebaseRequested, accessFirebaseSucceeded } from "../actions/greetingActions";
-//import { compose } from 'redux'
-import {
-  //firebaseConnect,
-  //isLoaded,
-  //isEmpty,
-  //dataToJS,
-  //pathToJS
-} from "react-redux-firebase"
 import database from "../Global"
 
-const accessFirebase = (dispatch: any) => {
+const getRecipe = (dispatch: any, key: String) => {
   dispatch(accessFirebaseRequested());
   database.ref("/").once("value", name => {
     dispatch(accessFirebaseSucceeded(name.val()))
@@ -21,12 +13,13 @@ const accessFirebase = (dispatch: any) => {
     console.log(error);
     dispatch(accessFirebaseError());
   });
-}
+};
 
 const mapStateToProps = (state: State) => {
   return {
-    greeting: state.greeting.greeting,
-    language: state.greeting.language,
+    recipeName: state.activeRecipe.recipeName,
+    ingredients: state.activeRecipe.ingredients,
+    steps: state.activeRecipe.steps,
   };
 };
 
@@ -36,17 +29,17 @@ const mapDispatchToProps = (dispatch: any) => {
       dispatch(setGreeting("Gutentag"));
       dispatch(setLanguage("German"));
     },
-    accessFiba: () => accessFirebase(dispatch),
+    getRecipe: (key: String) => getRecipe(dispatch, key),
   };
 };
 
-const HelloContainer = /*compose(
+const RecipeContainer = /*compose(
   firebaseConnect([
     'todos' // { path: 'todos' } // object notation
   ]),*/
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(Hello)
+  )(Recipe)
 
-export default HelloContainer;
+export default RecipeContainer;
