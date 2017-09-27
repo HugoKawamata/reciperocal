@@ -7,7 +7,7 @@ export interface MyRecipesProps {
 
 const MyRecipesItem: React.SFC<RecipeProps> = (props) => {
   return (
-    <div>hi
+    <div>
       {props.recipeName}
     </div>
   )
@@ -28,30 +28,5 @@ const MyRecipes: React.SFC<MyRecipesProps> = (props) => {
     </div>
   )
 }
-
-/*
-export class MyRecipesClass extends React.Component {
-  constructor(props: MyRecipesProps) {
-    super();
-    props.dispatchUpdateMyRecipes();
-  }
-
-  render() {
-    console.log("rendering myrecipes")
-    let recipeItems = [];
-
-    console.log(props.recipeList)
-    for (let i = 0; i < (props.recipeList ? props.recipeList.length : 0); i++) {
-      recipeItems.push(MyRecipesItem(props.recipeList[i]));
-    };
-    console.log(recipeItems);
-    return (
-      <div>
-        {recipeItems}
-      </div>
-    )
-  }
-}
-*/
 
 export default MyRecipes;

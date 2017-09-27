@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@types/react-redux": "^5.0.9",
+    "@types/react-router": "^4.0.15",
     "@types/redux-logger": "^3.0.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
